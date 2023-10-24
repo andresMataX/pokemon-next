@@ -1,5 +1,6 @@
 import Head from 'next/head'
 import { FC } from 'react'
+import { Navbar } from '../ui'
 
 interface Props {
   children: JSX.Element | JSX.Element[]
@@ -19,7 +20,9 @@ export const Layout: FC<Props> = ({ children, title }) => {
         <meta name='keywords' content={`${title}, pokemon, pokemon app`} />
       </Head>
 
-      <main>{children}</main>
+      <Navbar />
+
+      <main className='container mx-auto'>{children}</main>
     </>
   )
 }
