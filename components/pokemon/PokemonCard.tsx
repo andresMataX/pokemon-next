@@ -1,5 +1,6 @@
 import { SmallPokemon } from '@/interfaces'
 import { Card, CardBody, CardHeader, Image } from '@nextui-org/react'
+import { useRouter } from 'next/router'
 import { FC } from 'react'
 
 interface Props {
@@ -7,11 +8,17 @@ interface Props {
 }
 
 export const PokemonCard: FC<Props> = ({ pokemon }) => {
+  const router = useRouter()
+
+  const onClick = () => {
+    router.push(`/pokemon/${pokemon.id}`)
+  }
+
   return (
     <Card
       className='py-4 hover:scale-95 transition-all duration-300 ease-in-out'
       isPressable
-      onPress={() => console.log('item pressed')}
+      onPress={onClick}
     >
       <CardHeader className='pb-0 pt-2 px-4 flex-col items-start'>
         <p className='text-tiny uppercase font-bold'>Pokemon</p>
