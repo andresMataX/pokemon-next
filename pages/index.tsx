@@ -1,5 +1,6 @@
 import pokeAPI from '@/api/pokeAPI'
 import { Layout } from '@/components/layouts'
+import { PokemonCard } from '@/components/pokemon'
 import { PokeListResp, SmallPokemon } from '@/interfaces/pokeAPI'
 import { GetStaticProps, NextPage } from 'next'
 
@@ -10,11 +11,9 @@ interface Props {
 const HomePage: NextPage<Props> = ({ pokemons }) => {
   return (
     <Layout title='Listado de Pokémons'>
-      <ul>
+      <ul className='grid grid-cols-2 lg:grid-cols-4 xl:grid-cols-6 gap-5'>
         {pokemons.map((pokemon) => (
-          <li key={pokemon.id}>
-            # {pokemon.id} - {pokemon.name}
-          </li>
+          <PokemonCard pokemon={pokemon} key={pokemon.id} />
         ))}
       </ul>
     </Layout>
@@ -33,8 +32,6 @@ export const getStaticProps: GetStaticProps = async (ctx) => {
       }.svg`,
     }
   })
-
-  // https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/1.svg
 
   return {
     props: {

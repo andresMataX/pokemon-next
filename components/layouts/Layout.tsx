@@ -22,7 +22,7 @@ export const Layout: FC<Props> = ({ children, title }) => {
 
       <Navbar />
 
-      <main className='container mx-auto'>{children}</main>
+      <main className='container mx-auto py-8'>{children}</main>
     </>
   )
 }
