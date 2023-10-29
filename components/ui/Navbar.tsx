@@ -1,4 +1,5 @@
 import Image from 'next/image'
+import Link from 'next/link'
 
 export const Navbar = () => {
   return (
@@ -10,12 +11,14 @@ export const Navbar = () => {
         height={50}
       />
 
-      <span className='text-3xl'>P</span>
-      <span className='text-xl'>okemon</span>
+      <Link href='/' passHref>
+        <span className='text-3xl'>P</span>
+        <span className='text-xl'>okemon</span>
+      </Link>
 
       <div className='flex-1' />
 
-      <span>Favoritos</span>
+      <Link href='/favorites'>Favoritos</Link>
     </div>
   )
 }
