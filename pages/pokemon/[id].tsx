@@ -1,6 +1,7 @@
 import pokeAPI from '@/api/pokeAPI'
 import { Layout } from '@/components/layouts'
 import { Pokemon } from '@/interfaces'
+import localFavorites from '@/utils/localFavorites'
 import { Button, Card, CardBody, CardHeader, Image } from '@nextui-org/react'
 import { GetStaticPaths, GetStaticProps, NextPage } from 'next'
 
@@ -9,8 +10,12 @@ interface Props {
 }
 
 const PokemonPage: NextPage<Props> = ({ pokemon }) => {
+  const onToogleFavorite = () => {
+    localFavorites.toggleFavorites(pokemon.id)
+  }
+
   return (
-    <Layout title='Pokemon 1'>
+    <Layout title={pokemon.name}>
       <section className='grid grid-cols-2 md:grid-cols-3 gap-4'>
         <Card className='py-4'>
           <CardBody className='overflow-visible py-2'>
@@ -27,7 +32,11 @@ const PokemonPage: NextPage<Props> = ({ pokemon }) => {
           <CardHeader className='flex justify-between'>
             <h1 className='text-5xl font-bold capitalize'>{pokemon.name}</h1>
 
-            <Button color='secondary' variant='ghost'>
+            <Button
+              color='secondary'
+              variant='ghost'
+              onClick={onToogleFavorite}
+            >
               Guardar en Favoritos
             </Button>
           </CardHeader>

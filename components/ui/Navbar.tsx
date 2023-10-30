@@ -11,7 +11,7 @@ export const Navbar = () => {
         height={50}
       />
 
-      <Link href='/' passHref>
+      <Link href='/'>
         <span className='text-3xl'>P</span>
         <span className='text-xl'>okemon</span>
       </Link>
