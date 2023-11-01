@@ -1,4 +1,5 @@
 import { Card, Image } from '@nextui-org/react'
+import { useRouter } from 'next/router'
 import { FC } from 'react'
 
 interface Props {
@@ -6,11 +7,18 @@ interface Props {
 }
 
 export const FavoriteCardPokemon: FC<Props> = ({ id }) => {
+  const router = useRouter()
+
+  const onFavoriteClick = () => {
+    router.push(`/pokemon/${id}`)
+  }
+
   return (
     <Card
       isHoverable
       isPressable
       className='flex justify-center items-center p-2'
+      onClick={onFavoriteClick}
     >
       <Image
         src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/${id}.svg`}
