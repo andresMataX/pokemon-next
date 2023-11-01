@@ -11,15 +11,11 @@ export const PokemonCard: FC<Props> = ({ pokemon }) => {
   const router = useRouter()
 
   const onClick = () => {
-    router.push(`/pokemon/${pokemon.id}`)
+    router.push(`/name/${pokemon.name}`)
   }
 
   return (
-    <Card
-      className='py-4 hover:scale-95 transition-all duration-300 ease-in-out'
-      isPressable
-      onPress={onClick}
-    >
+    <Card className='py-4' isPressable isHoverable onPress={onClick}>
       <CardHeader className='pb-0 pt-2 px-4 flex-col items-start'>
         <p className='text-tiny uppercase font-bold'>Pokemon</p>
         <small className='text-default-500'>ID: #{pokemon.id}</small>
